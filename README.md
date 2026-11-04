@@ -20,7 +20,7 @@ A 2D remake of the classic Flappy Bird game developed in **Godot 4** using **GDS
 <img width="535" height="642" alt="image" src="https://github.com/user-attachments/assets/081a3cf9-9639-4670-a769-32978437be27" />
 
 
-<video src="https://github.com/user-attachments/assets/ee7271f5-a379-4b26-abba-19cfebb3b6df" autoplay loop muted playsinline width="100%"></video>
+https://github.com/user-attachments/assets/ee7271f5-a379-4b26-abba-19cfebb3b6df
 
 
 
