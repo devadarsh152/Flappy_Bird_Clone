@@ -9,7 +9,7 @@ A 2D remake of the classic Flappy Bird game developed in **Godot 4** using **GDS
 * **Score Tracking:** Utilized Godot's **Signal system** to decouple score calculation from obstacle passage.
 
 ## 🛠️ Built With
-* **Engine:** Godot Engine 4.x
+* **Engine:** Godot Engine 4.6
 * **Language:** GDScript
 
 ## 🎨 Asset Credits
@@ -28,7 +28,7 @@ A 2D remake of the classic Flappy Bird game developed in **Godot 4** using **GDS
 
 ## 🚀 How to Run Locally
 1. Download or clone this repository.
-2. Open **Godot 4.x**.
+2. Open **Godot 4.6**.
 3. Import the project using `project.godot` and press **F5** to run.
 
 
