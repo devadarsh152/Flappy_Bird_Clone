@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://chexpccwh835a"]
+
+[ext_resource type="Script" uid="uid://cynfdjeol5tm2" path="res://scenes/pipes.gd" id="1_3ahhd"]
+[ext_resource type="Texture2D" uid="uid://ugwtnl4xmymk" path="res://assets/flappy bird/Game Objects/pipe-green.png" id="1_f17p0"]
+[ext_resource type="AudioStream" uid="uid://dmlhkdfk6mate" path="res://assets/flappy bird/Sound Efects/point.ogg" id="3_prsvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f17p0"]
+size = Vector2(41, 317.96826)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ahhd"]
+size = Vector2(43, 316.4445)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prsvi"]
+size = Vector2(5.5, 150)
+
+[node name="pipe node" type="Node2D" unique_id=682545306]
+script = ExtResource("1_3ahhd")
+
+[node name="pipe up" type="Sprite2D" parent="." unique_id=1691381045]
+position = Vector2(0, 344)
+scale = Vector2(1, 1.7437499)
+texture = ExtResource("1_f17p0")
+
+[node name="Area2D" type="Area2D" parent="pipe up" unique_id=687635719]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe up/Area2D" unique_id=1475712765]
+position = Vector2(-0.49999997, 2.0317383)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_f17p0")
+
+[node name="pipe down" type="Sprite2D" parent="." unique_id=2125459314]
+position = Vector2(1.0000094, -389.43307)
+rotation = -3.1415925
+scale = Vector2(1, 1.8839567)
+texture = ExtResource("1_f17p0")
+
+[node name="Area2D" type="Area2D" parent="pipe down" unique_id=645589093]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe down/Area2D" unique_id=1962839055]
+position = Vector2(-0.50002736, 1.269867)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_3ahhd")
+debug_color = Color(0.14022568, 0.5908128, 0.71919256, 0.41960785)
+
+[node name="score_area" type="Area2D" parent="." unique_id=326474147]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="score_area" unique_id=1504393790]
+position = Vector2(21.75, -11)
+shape = SubResource("RectangleShape2D_prsvi")
+
+[node name="point_scored" type="AudioStreamPlayer2D" parent="." unique_id=1225806866]
+stream = ExtResource("3_prsvi")
+volume_db = -0.13
+
+[connection signal="body_entered" from="pipe up/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="pipe down/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="score_area" to="." method="_on_score_area_body_entered"]

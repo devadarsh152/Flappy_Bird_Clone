@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://csy3p78bu7btb"]
+
+[ext_resource type="Script" uid="uid://dm6gtvielg7tq" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://rirlv7h70kv0" path="res://scenes/bird.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://cfx061jkuy74t" path="res://assets/flappy bird/Game Objects/background-day.png" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://1vhyfeqgcqa1" path="res://assets/flappy bird/Game Objects/base.png" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://chexpccwh835a" path="res://scenes/pipes.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://8rqr4no6kboi" path="res://button.tscn" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://bshxlh6pkt7pf" path="res://assets/flappy bird/UI/gameover.png" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://g6ykfbwps0l3" path="res://assets/flappy bird/UI/message.png" id="8_tipki"]
+[ext_resource type="AudioStream" uid="uid://defucurciclfp" path="res://assets/flappy bird/Sound Efects/hit.ogg" id="9_85g3d"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
+normal = Vector2(0.0037037658, -0.99999315)
+distance = 541.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sgp6g"]
+distance = -237.0
+
+[sub_resource type="GDScript" id="GDScript_tbgi4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85g3d"]
+load_path = "res://.godot/imported/refresh-arrow.png-e904d763ecefd6821f167ec2430d9950.ctex"
+
+[node name="main" type="Node" unique_id=2119860802]
+script = ExtResource("1_0wfyh")
+pipe_scene = ExtResource("6_tefeu")
+
+[node name="upperboundary" type="Area2D" parent="." unique_id=929048268]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="upperboundary" unique_id=615212003]
+position = Vector2(3, -547)
+rotation = -3.1415927
+shape = SubResource("WorldBoundaryShape2D_jyhfs")
+
+[node name="lowerboundary" type="Area2D" parent="." unique_id=1649689042]
+position = Vector2(-4, -103)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lowerboundary" unique_id=716753495]
+position = Vector2(-1, 381)
+shape = SubResource("WorldBoundaryShape2D_sgp6g")
+
+[node name="background" type="Sprite2D" parent="." unique_id=935782514]
+position = Vector2(6739.0005, 319)
+scale = Vector2(50.472225, 1.2617188)
+texture = ExtResource("2_jyhfs")
+metadata/_edit_lock_ = true
+
+[node name="bird" parent="." unique_id=1908540644 instance=ExtResource("1_o5qli")]
+position = Vector2(-117, 335)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=318284340]
+position = Vector2(47, 321)
+position_smoothing_enabled = true
+script = SubResource("GDScript_tbgi4")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=980173360]
+z_index = 10
+position = Vector2(6740, 587.00006)
+scale = Vector2(43.26488, 1.0535715)
+texture = ExtResource("5_tbgi4")
+
+[node name="pipetimer" type="Timer" parent="." unique_id=353641396]
+wait_time = 1.5
+autostart = true
+
+[node name="spawnpoint" type="Marker2D" parent="." unique_id=2086744340]
+position = Vector2(680, 313)
+
+[node name="retry" type="CanvasLayer" parent="." unique_id=695908334]
+
+[node name="retry" type="Control" parent="retry" unique_id=529084685]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="retry_button" parent="retry/retry" unique_id=1630524310 instance=ExtResource("7_o6xl0")]
+process_mode = 3
+z_index = 13
+layout_mode = 0
+offset_left = 3.0
+offset_top = 417.0
+offset_right = 60.0
+offset_bottom = 473.0
+theme_override_icons/icon = SubResource("CompressedTexture2D_85g3d")
+text = "
+"
+expand_icon = true
+
+[node name="deathscreen" type="CanvasLayer" parent="." unique_id=1452750384]
+
+[node name="death screen" type="Control" parent="deathscreen" unique_id=949546088]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Gameover" type="Sprite2D" parent="deathscreen/death screen" unique_id=1480035674]
+position = Vector2(582.00006, 318)
+scale = Vector2(1.5885417, 2.2857144)
+texture = ExtResource("7_tipki")
+
+[node name="Message" type="Sprite2D" parent="." unique_id=1619183492]
+position = Vector2(74.00002, 263.34375)
+scale = Vector2(1.5326086, 1.5704588)
+texture = ExtResource("8_tipki")
+
+[node name="score" type="CanvasLayer" parent="." unique_id=331715468]
+
+[node name="Control" type="Control" parent="score" unique_id=396822510]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="score" type="Label" parent="score/Control" unique_id=1234436052]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "999
+"
+
+[node name="die" type="AudioStreamPlayer2D" parent="." unique_id=865197876]
+process_mode = 3
+stream = ExtResource("9_85g3d")
+
+[node name="final score" type="CanvasLayer" parent="." unique_id=429714940]
+
+[node name="Control" type="Control" parent="final score" unique_id=344857858]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="final" type="Label" parent="final score/Control" unique_id=1144515133]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 152.0
+offset_right = 570.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 38
+text = "999"
+
+[connection signal="died" from="bird" to="." method="_on_bird_died"]
+[connection signal="started" from="bird" to="." method="_on_bird_started"]
+[connection signal="update_score" from="bird" to="." method="_on_bird_update_score"]
+[connection signal="timeout" from="pipetimer" to="." method="_on_pipetimer_timeout"]
+[connection signal="pressed" from="retry/retry/retry_button" to="." method="_on_retry_button_pressed"]
