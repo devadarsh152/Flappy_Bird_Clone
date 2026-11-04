@@ -13,7 +13,7 @@ A 2D remake of the classic Flappy Bird game developed in **Godot 4** using **GDS
 * **Language:** GDScript
 
 ## 🎨 Asset Credits
-* **Visual & Audio Assets:** Created by **kosresetr55** via [itch.io](https://itch.io).
+* **Visual & Audio Assets:** Created by **kosresetr55** via [itch.io](https://kosresetr55.itch.io/flappy-bird-assets-by-kosresetr55).
 * **Code & Game Logic:** Developed by **Devadarsh E**.
 
 ## 🚀 How to Run Locally
